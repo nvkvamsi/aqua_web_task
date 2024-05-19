@@ -10,7 +10,7 @@ class GigController extends Controller
 {
     public function index(Request $request)
     {
-        if (!Auth::user()->hasAnyPermission(['can_view_gig'])) {
+        if (!Auth::user()->hasPermission('can_view_gig')) {
            return view('errors.access_denied');
         }
         if ($request->ajax()) {

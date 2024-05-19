@@ -55,7 +55,7 @@
 										
 									];
 									$sort_by = ''; 
-									$api_url='jobs';
+									$api_url='get-gigs';
 								@endphp
 								@include('admin.components.data-ui-table', ['headers' => $headers, 'ap_url' => $api_url,'sort_by'=>$sort_by])
 								

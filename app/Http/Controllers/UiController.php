@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Gig;
 use Illuminate\Support\Facades\Validator;
 
 class UiController extends Controller
@@ -70,5 +71,54 @@ class UiController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('ui.login');
+    }
+
+    public function gig(Request $request)
+    {
+        
+        if ($request->ajax()) {
+                  
+            $rules = [
+                'per_page' => 'integer|in:1,5,10,25,50,100',
+            ];
+            $customMessages = [
+                'per_page.integer' => 'The per page value must be an integer.',
+                'per_page.in' => 'The per page value must be one of the following: 1, 5, 10, 25, 50, 100.',
+            ];
+
+            // Use the Validator facade to validate the request
+            $details = Validator::make($request->all(), $rules, $customMessages);
+
+            if ($details->fails()) {
+                return response()->json(['errors' => $details->errors()], 422);
+            }
+      
+            $data = Gig::query();
+         
+            if ($request->has('search') && !empty($request->search)) {
+                $data->searchByKeywords($request->search);
+            }
+            if ($request->has('location') && !empty($request->location)) {
+                $data->where('location', 'like', '%' . $request->location . '%');
+            }
+            if ($request->has('search') && !empty($request->search)) {
+                $data->whereAny([
+                    'title',
+                    'location',
+                    'description',
+                    'job_type'
+                ], 'LIKE', '%' . $request->search . '%');
+            }
+            
+            $per_page = $request->has('per_page') ? $request->per_page : 10;
+            if ($request->has('sort_by') && $request->has('order')) {
+                $data = $data->orderBy($request['sort_by'], $request['order']);
+            } else {
+                $data = $data->orderBy('id', 'desc');
+            }
+            
+            return $data->paginate($per_page);
+        }
+        return view('admin.pages.gigs.index');
     }
 }

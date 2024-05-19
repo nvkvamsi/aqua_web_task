@@ -46,10 +46,9 @@ class CreateAdminUserSeeder extends Seeder
         $permissions = Permission::pluck('id','id')->all();
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
-     
-        
-     
-
+        $role_s = Role::create(['name' => 'Supervisor']);
+        $permissions=['can_view_gig','can_view_careers'];
+        $role_s->syncPermissions($permissions);
     }
 
 }

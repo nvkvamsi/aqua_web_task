@@ -12,6 +12,7 @@ Route::view('/signup', 'ui.auth.signup')->name('ui.signup');
 Route::post('login', [UiController::class, 'login'])->name('ui_login');
 Route::post('signup', [UiController::class, 'signup'])->name('ui_signup');
 Route::post('logout', [UiController::class, 'logout'])->name('ui.logout');
+Route::get('get-gigs', [UiController::class, 'gig']);
 Route::middleware(['guest'])->group(function () {
     Route::view('/login', 'ui.auth.login')->name('ui.login');
 });
