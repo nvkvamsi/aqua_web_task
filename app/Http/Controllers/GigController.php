@@ -14,6 +14,7 @@ class GigController extends Controller
         if (!Auth::user()->hasAnyPermission(['can_view_gig'])) {
             return view('errors.access_denied');
         }
+        Gig::where(['checked' => '0'])->update(['checked' => '1']);
         if ($request->ajax()) {
                   
             $rules = [
@@ -123,6 +124,15 @@ class GigController extends Controller
         $gig->delete();
 
         return redirect()->route('gigs.index')->with('success', 'Gig deleted successfully.');
+    }
+
+    public function order_data()
+    {
+        $new_order = Gig::where(['checked' => '0'])->count();
+        return response()->json([
+            'success' => 1,
+            'data' => ['new_order' => $new_order]
+        ]);
     }
 }
 

@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->enum('status', ['inactive', 'active'])->default('inactive');
+            $table->enum('checked', ['0', '1'])->default('0');
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('users');
    

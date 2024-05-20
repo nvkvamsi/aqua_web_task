@@ -20,6 +20,10 @@ class Helpers
     {
         return SettingsApplication::where('slug','contact-notification')->select('status')->first();
     }
+    public static function getGigSettingsApplicationStatus()
+    {
+        return SettingsApplication::where('slug','gig-notification')->select('status')->first();
+    }
     public static function getAvailableActions($permissions) {
         $availableActions = [];
         $userPermissions=Auth::user()->getPermissions();

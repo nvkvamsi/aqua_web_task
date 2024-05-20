@@ -12,16 +12,26 @@ class SettingsApplicationsSeeder extends Seeder
      */
     public function run(): void
     {
-        SettingsApplication::create([
-            'name' => 'Career Notification',
-            'slug' => 'career-notification',
-            'status' => 'inactive',
-        ]);
-
-        SettingsApplication::create([
-            'name' => 'Contact Notification',
-            'slug' => 'contact-notification',
-            'status' => 'inactive',
-        ]);
+        $settings = [
+            [
+                'name' => 'Career Notification',
+                'slug' => 'career-notification',
+                'status' => 'inactive',
+            ],
+            [
+                'name' => 'Contact Notification',
+                'slug' => 'contact-notification',
+                'status' => 'inactive',
+            ],
+            [
+                'name' => 'Gig Notification',
+                'slug' => 'gig-notification',
+                'status' => 'inactive',
+            ],
+        ];
+        
+        foreach ($settings as $setting) {
+            SettingsApplication::create($setting);
+        }
     }
 }

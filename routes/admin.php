@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('import-gigs', [ExcelController::class, 'importGigs'])->name('import_gigs');
     Route::get('career_order_data', [CareerController::class, 'order_data'])->name('career_order_data');
     Route::get('contact_order_data', [ContactController::class, 'order_data'])->name('contact_order_data');
+    Route::get('gig_order_data', [GigController::class, 'order_data'])->name('gig_order_data');
 });
 
 
