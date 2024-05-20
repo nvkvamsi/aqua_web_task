@@ -24,70 +24,15 @@
             <h5 class="card-title">Add a new Gig</h5>
             <hr/>
             @include('layouts.error')
+           
             <div class="form-body mt-4">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="border border-3 p-4 rounded">
                             <form action="{{ route('gigs.store') }}" method="POST">
+                   
                                 @csrf
-                                @php
-                                    $elements = [
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Title',
-                                                        'key' => 'title',
-                                                        'place_holder' => 'Enter Title',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                    ],
-                                                    [
-                                                        'method' => 'text-area',
-                                                        'label' => 'Enter Description',
-                                                        'key' => 'description',
-                                                        'place_holder' => 'Enter Description',
-                                                        'editor-type'=>'ckeditor',
-                                                        'rows-size'=>10,
-                                                        'cols-size'=>50,
-                                                        'required' => true,
-                                                    ],
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Location',
-                                                        'key' => 'location',
-                                                        'place_holder' => 'Enter Location',
-                                                        'type' => 'text',
-                                                        'required' => true, // Since 'location' can be nullable
-                                                    ],
-                                                    [
-                                                        'method' => 'drop-down',
-                                                        'label' => 'Enter Job Type',
-                                                        'key' => 'job_type',
-                                                        'place_holder' => 'Enter Job Type',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                        'data' => [
-                                                            'full-time' => 'Full time',
-                                                            'contract' => 'Contract',
-                                                            'part-time' => 'Part time'
-                                                        ]
-                                                    ],
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Company Name',
-                                                        'key' => 'company_name',
-                                                        'place_holder' => 'Enter Company Name',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                    ],
-                                                   
-
-                                            
-                                        ];
-                                @endphp
-                               
-                               
-
-                                @include('admin.components.form-elements', ['elements' => $elements])
+                                @include('admin.pages.gigs.config', ['data' => null])
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </form>
                             

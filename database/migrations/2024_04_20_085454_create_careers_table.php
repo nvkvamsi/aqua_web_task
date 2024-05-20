@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('cover_letter');
             $table->string('resume_path');
             $table->timestamps();
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->foreign('job_id')->references('id')->on('gigs');
             $table->foreign('applied_by')->references('id')->on('users');
         });
     }

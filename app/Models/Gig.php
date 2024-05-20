@@ -19,6 +19,13 @@ class Gig extends Model
         'responsibilities',
         'experience',
         'created_by',
+        'internal_link',
+        'technology',
+        'state',
+        'country',
+        'city',
+        'address',
+        'short_description',
         'status'
     ];
     public static $rules = [
@@ -30,6 +37,13 @@ class Gig extends Model
         'company_name' => 'nullable|string|max:255',
         'responsibilities' => 'nullable|string',
         'experience' => 'nullable|string',
+        'internal_link' => 'nullable|string|max:255',
+        'technology' => 'nullable|string|max:255',
+        'state' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+        'city' => 'nullable|string|max:255',
+        'address' => 'nullable|string|max:255',
+        'short_description' => 'nullable|string'
     ];
     public static $messages = [
         'title.string' => 'Title must be a string.',
@@ -45,6 +59,7 @@ class Gig extends Model
         'job_type.string' => 'Job type must be a string.',
         'job_type.max' => 'Job type cannot exceed 255 characters.',
         'responsibilities.string' => 'Responsibilities must be a string.',
+        
 
  
     ];

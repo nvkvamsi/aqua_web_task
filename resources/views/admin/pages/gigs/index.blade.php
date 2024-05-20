@@ -38,7 +38,9 @@
             ['action' => 'edit', 'name' => 'can_update_gig'],
             
             ['action' => 'toggle', 'name' => 'can_delete_gig'],
-            ['action' => 'delete', 'name' => 'can_delete_gig']
+            ['action' => 'delete', 'name' => 'can_delete_gig'],
+           
+          
         ];
         
         

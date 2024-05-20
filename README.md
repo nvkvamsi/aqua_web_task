@@ -22,14 +22,14 @@ In the admin panel, create a user for the supervisor role.
 SMTP Configuration
 
 In the .env file, set the MAIL_MAILER to log:
-plaintext
+
 
 MAIL_MAILER=log
 This will store emails in laravel.log located in the storage directory. If SMTP is configured, emails will be sent; otherwise, they will be logged.
 Mail Queue Configuration
 
 Set the queue connection to synchronous by adding the following line in your .env file:
-plaintext
+
 
 QUEUE_CONNECTION=sync
 This ensures that jobs are executed automatically. If not, use the command:

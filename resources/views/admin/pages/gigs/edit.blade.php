@@ -37,66 +37,7 @@
                             <form action="{{ route('gigs.update', $gig->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                @php
-                                $elements = [
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Title',
-                                                        'key' => 'title',
-                                                        'place_holder' => 'Enter Title',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                    ],
-                                                    [
-                                                        'method' => 'text-area',
-                                                        'label' => 'Enter Description',
-                                                        'key' => 'description',
-                                                        'place_holder' => 'Enter Description',
-                                                        'editor-type'=>'ckeditor',
-                                                        'rows-size'=>10,
-                                                        'cols-size'=>50,
-                                                        'required' => true,
-                                                    ],
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Location',
-                                                        'key' => 'location',
-                                                        'place_holder' => 'Enter Location',
-                                                        'type' => 'text',
-                                                        'required' => true, // Since 'location' can be nullable
-                                                    ],
-                                                    [
-                                                        'method' => 'drop-down',
-                                                        'label' => 'Enter Job Type',
-                                                        'key' => 'job_type',
-                                                        'place_holder' => 'Enter Job Type',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                        'data' => [
-                                                            'full-time' => 'Full time',
-                                                            'contract' => 'Contract',
-                                                            'part-time' => 'Part time'
-                                                        ]
-                                                    ],
-                                                    [
-                                                        'method' => 'input',
-                                                        'label' => 'Enter Company Name',
-                                                        'key' => 'company_name',
-                                                        'place_holder' => 'Enter Company Name',
-                                                        'type' => 'text',
-                                                        'required' => true,
-                                                    ],
-
-                                            
-                                            ];
-                               
-
-
-                                    $data=$gig;
-                                @endphp
-
-                                @include('admin.components.form-elements', ['elements' => $elements,'data'=>$data])
-                                
+                                @include('admin.pages.gigs.config', ['data' => $gig])
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                             

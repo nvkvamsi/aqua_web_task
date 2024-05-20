@@ -21,6 +21,13 @@ return new class extends Migration
             $table->enum('job_type', ['full-time', 'part-time', 'contract']);
             $table->string('company_name')->nullable();
             $table->text('responsibilities')->nullable();
+            $table->string('internal_link')->nullable();
+            $table->string('technology')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->text('short_description')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->enum('status', ['inactive', 'active'])->default('inactive');
             $table->timestamps();
