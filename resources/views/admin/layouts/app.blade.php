@@ -142,7 +142,7 @@
        
     @endif
 	@if(\App\Repeated\Helpers::getGigSettingsApplicationStatus()->status =='active')
-		setInterval(fetchDataAndCheckOrders('{{ route('contact_order_data') }}','#contact-modal'), 10000);
+		setInterval(fetchDataAndCheckOrders('{{ route('contact_order_data') }}','#gig-modal'), 10000);
        
     @endif
 </script>

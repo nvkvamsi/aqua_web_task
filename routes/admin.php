@@ -1,14 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GigController;
-use App\Http\Controllers\CareerController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\SettingsApplicationController;
-use App\Http\Controllers\UserController;
+
 // Add more routes as needed
 
 // Route::view('/signup', 'admin.auth.signup')->name('ui.signup');
